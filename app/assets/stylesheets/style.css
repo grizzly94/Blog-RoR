@@ -1,0 +1,47 @@
+html,body{
+    margin: 0px;
+    font-family: 'Open Sans', sans-serif;
+}
+.btn{
+    background-color: inherit;
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: 8px 10px;
+}
+a,a:visited{
+    color:inherit !important;
+    text-decoration: none;
+}
+.no-margin{
+    margin: 0px;
+}
+#logo{
+    font-size: 1.2em;
+}
+.be-red{
+    background-color: #8568B3;
+}
+.white{
+    color:#FFD0A1;
+}
+.large-padding{
+    padding: 7px 5px;
+}
+.field{
+    margin-top: 1em ;
+}
+.form-control{
+    border: none;
+    border-bottom: 1px solid;
+    outline: none;
+    width: 100%;
+    display: block;
+    padding: 10px 0px;
+    font-size: 1.2em;
+}
+.top-space{
+    margin-top: 1em;
+}
