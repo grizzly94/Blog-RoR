@@ -12,11 +12,16 @@ class ArticlesController <ApplicationController
   def new
     @article = Article.new
   end
+  def edit
+    @article = Article.find(params[:id])
+  end
+
   #POST /articles
   def create
     #INSERT INTO
-    @article = Article.new(title: params[:article][:title],
-                           body: params[:article][:body])
+    #@article = Article.new(title: params[:article][:title],
+    #                       body: params[:article][:body])
+    @article = Article.new(article_params)
     if @article.save
       redirect_to @article
     else
@@ -25,6 +30,12 @@ class ArticlesController <ApplicationController
   end
   #PUT /articles/:id
   def update
+    @article = Article.find(params[:id])
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render :edit
+    end
     #@article.update_attributes({title})
   end
 
@@ -32,5 +43,12 @@ class ArticlesController <ApplicationController
     @article = Article.find(params[:id])
     @article.destroy #DELETE DE LA BD
     redirect_to articles_path
-   end
+  end
+
+  private #De aquí para abajo son métdos privados de la clase
+
+  def article_params
+    params.require(:article).permit(:title,:body)
+  end
+
 end
