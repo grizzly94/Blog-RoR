@@ -2,6 +2,12 @@ html,body{
     margin: 0px;
     font-family: 'Open Sans', sans-serif;
 }
+.be-red{
+    background-color: #8568B3;
+}
+.white{
+    color:#FFD0A1;
+}
 .btn{
     background-color: inherit;
     border: none;
@@ -24,6 +30,7 @@ a,a:visited{
 .be-red{
     background-color: #8568B3;
 }
+
 .red{
     color: #B00100 !important;
 }
@@ -33,7 +40,7 @@ a,a:visited{
 .large-padding{
     padding: 7px 5px;
 }
-.field{
+.top-space,.actions{
     margin-top: 1em ;
 }
 .form-control{
@@ -45,6 +52,6 @@ a,a:visited{
     padding: 10px 0px;
     font-size: 1.2em;
 }
-.top-space{
-    margin-top: 1em;
+.text-left{
+    text-align: left;
 }
