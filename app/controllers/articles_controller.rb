@@ -1,27 +1,26 @@
 class ArticlesController <ApplicationController
+  before_action :authenticate_user!,except: [:show,:index]
+  before_action :set_article, except: [:create,:index,:new]
   #GET /articles
   def index
     @articles = Article.all # @ accesible para la vista
   end
   #GET /articles/:id
   def show
-    @article = Article.find(params[:id]) #params es un hash con todos los parametros que se mandan
-
+    #params es un hash con todos los parametros que se mandan
+    @article.update_visits_count
   end
   #GET /articles/new
   def new
     @article = Article.new
   end
   def edit
-    @article = Article.find(params[:id])
+
   end
 
   #POST /articles
   def create
-    #INSERT INTO
-    #@article = Article.new(title: params[:article][:title],
-    #                       body: params[:article][:body])
-    @article = Article.new(article_params)
+    @article = current_user.articles.new(article_params)
     if @article.save
       redirect_to @article
     else
@@ -30,7 +29,7 @@ class ArticlesController <ApplicationController
   end
   #PUT /articles/:id
   def update
-    @article = Article.find(params[:id])
+
     if @article.update(article_params)
       redirect_to @article
     else
@@ -40,15 +39,20 @@ class ArticlesController <ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
+
     @article.destroy #DELETE DE LA BD
     redirect_to articles_path
   end
 
   private #De aquí para abajo son métdos privados de la clase
-
+  def set_article
+    @article = Article.find(params[:id])
+  end
   def article_params
     params.require(:article).permit(:title,:body)
+  end
+  def validate_user
+    redirect_to new_user_session_path, notice: "Necesitas iniciar sesión"
   end
 
 end

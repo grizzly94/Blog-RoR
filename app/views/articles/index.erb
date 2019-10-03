@@ -1,7 +1,10 @@
-<% @articles.each do |article| %>
-  <h1><%= link_to article.title, article %>"</h1>
-  <div>
-    <%= article.body %> - <%= link_to "Eliminar",article,class: "red",method: :delete %>
-  </div>
-<%end %>
-
+<div class="container top-space">
+  <% @articles.each do |article| %>
+    <h1 class="is-size-3"><%= link_to article.title, article %>"</h1>
+    <div>
+      <p class="is-size-6">
+        <%= article.body %> - <%= link_to "Eliminar",article,class: "red",method: :delete %>
+      </p>
+    </div>
+  <%end %>
+</div>
