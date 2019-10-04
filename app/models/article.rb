@@ -1,5 +1,6 @@
 class Article < ApplicationRecord
   belongs_to :user
+  has_many :comments
   validates :title, uniqueness: true, presence: true #Valida que el elemento no esté vacío
   validates :body, presence: true, length: {minimum: 20}
   before_create :set_visits_count

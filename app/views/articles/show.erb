@@ -13,3 +13,14 @@
 <div>
   <%= link_to "Editar", edit_article_path(@article) %>
 </div>
+<div>
+  <h1>Comentarios</h1>
+  <%=render "comments/form" %>
+  <ul>
+    <% @article.comments.each do |comment| %>
+      <li>
+        <%= comment.body%> - <%= comment.user.email %>
+      </li>
+    <%end%>
+  </ul>
+</div>

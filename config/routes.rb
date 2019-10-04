@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
+
   devise_for :users
-  resources :articles #only, except
+  resources :articles do
+    resources :comments, only: [:create, :destroy, :update]
+  end
+
 =begin
     get "/articles" index
     post "/articles" create

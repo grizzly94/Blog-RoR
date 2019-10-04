@@ -9,6 +9,7 @@ class ArticlesController <ApplicationController
   def show
     #params es un hash con todos los parametros que se mandan
     @article.update_visits_count
+    @comment = Comment.new
   end
   #GET /articles/new
   def new
@@ -17,7 +18,6 @@ class ArticlesController <ApplicationController
   def edit
 
   end
-
   #POST /articles
   def create
     @article = current_user.articles.new(article_params)
