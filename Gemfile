@@ -26,6 +26,7 @@ gem "devise"
 #Bulma CSS Framework
 gem "rails-assets-bulma", source: 'https://rails-assets.org'
 
+gem 'jquery-rails'
 
 
 # Use Redis adapter to run Action Cable in production

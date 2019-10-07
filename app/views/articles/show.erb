@@ -16,7 +16,7 @@
 <div>
   <h1>Comentarios</h1>
   <%=render "comments/form" %>
-  <ul>
+  <ul id="comments-box">
     <% @article.comments.each do |comment| %>
       <li>
         <%= comment.body%> - <%= comment.user.email %>
