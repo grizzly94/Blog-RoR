@@ -1,2 +1,5 @@
-console.log(<%= @comment.inspect %>);
+// Se agrega el comentario a la caja de comentarios
+$('#comments-box').append("<li><%=@comment.body %></li>");
+// Se limpia el campo de texto
+$('#comments-form').find("textarea").val("")
 
