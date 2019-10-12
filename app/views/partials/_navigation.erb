@@ -2,19 +2,10 @@
   <nav class="be-red white is-fullheight-with-navbar">
     <ul class="row has-text-centered  middle-xs">
       <li class="white navbar-item column">
-        <h1 class="no-margin" id="logo">RubyBlog</h1>
+        <h1 class="no-margin" id="logo"><%= link_to "RubyBlog", root_path %></h1>
       </li>
       <li class="white navbar-item column">
-        <%= link_to "Inicio", root_path %>
-      </li>
-      <li class="white navbar-item column">
-        Design
-      </li>
-      <li class="white navbar-item column">
-        Programación
-      </li>
-      <li class="white navbar-item column">
-        Tecnología
+        <%= link_to "Artículos", articles_path %>
       </li>
       <% if user_signed_in? %>
         <li class="white navbar-item column">

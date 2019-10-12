@@ -28,6 +28,8 @@ gem "rails-assets-bulma", source: 'https://rails-assets.org'
 
 gem 'jquery-rails'
 
+#Para archivos
+gem 'paperclip'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

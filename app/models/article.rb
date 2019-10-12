@@ -4,6 +4,9 @@ class Article < ApplicationRecord
   validates :title, uniqueness: true, presence: true #Valida que el elemento no esté vacío
   validates :body, presence: true, length: {minimum: 20}
   before_create :set_visits_count
+  has_attached_file :cover, styles:{medium: "1280x720",thumb:"800x600"}
+  validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
+
   #validates :username, format: {with: /regex/ }
   def update_visits_count
     self.update(visits_count: self.visits_count + 1)

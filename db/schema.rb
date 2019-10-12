@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_03_230834) do
+ActiveRecord::Schema.define(version: 2019_10_08_053329) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -20,6 +20,10 @@ ActiveRecord::Schema.define(version: 2019_10_03_230834) do
     t.datetime "updated_at", null: false
     t.string "user_references"
     t.integer "user_id"
+    t.string "cover_file_name"
+    t.string "cover_content_type"
+    t.bigint "cover_file_size"
+    t.datetime "cover_updated_at"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
