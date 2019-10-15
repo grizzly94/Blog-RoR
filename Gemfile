@@ -27,7 +27,8 @@ gem "devise"
 gem "rails-assets-bulma", source: 'https://rails-assets.org'
 
 gem 'jquery-rails'
-
+#Máquina de estados
+gem 'aasm'
 #Para archivos
 gem 'paperclip'
 

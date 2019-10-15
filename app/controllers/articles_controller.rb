@@ -1,6 +1,8 @@
 class ArticlesController <ApplicationController
   before_action :authenticate_user!,except: [:show,:index]
   before_action :set_article, except: [:create,:index,:new]
+  before_action :authenticate_editor!, only: [:new,:create,:update]
+  before_action :authenticate_admin!, only: [:destroy]
   #GET /articles
   def index
     @articles = Article.all # @ accesible para la vista
@@ -14,6 +16,7 @@ class ArticlesController <ApplicationController
   #GET /articles/new
   def new
     @article = Article.new
+    @categories = Category.all
   end
   def edit
 
@@ -21,6 +24,7 @@ class ArticlesController <ApplicationController
   #POST /articles
   def create
     @article = current_user.articles.new(article_params)
+    @article.category_ids = params[:article][:category_ids]
     if @article.save
       redirect_to @article
     else
@@ -49,7 +53,7 @@ class ArticlesController <ApplicationController
     @article = Article.find(params[:id])
   end
   def article_params
-    params.require(:article).permit(:title,:body,:cover)
+    params.require(:article).permit(:title,:body,:cover,:category_ids=>[])
   end
   def validate_user
     redirect_to new_user_session_path, notice: "Necesitas iniciar sesión"
