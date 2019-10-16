@@ -1,0 +1,13 @@
+<div class="card-content">
+  <% @articles.each do |article| %>
+    <h1 class="is-size-3"><%= link_to article.title, article %></h1>
+    <div>
+      <p class="is-size-6">
+        <%= article.body %> - <%= link_to "Eliminar",article,class: "has-text-danger",method: :delete %>
+        <%if article.may_publish? %>
+          - <%= link_to "Publicar", "/articles/#{article.id}/publish", class: "has-text-info", method: :put %>
+        <%end %>
+      </p>
+    </div>
+  <%end %>
+</div>

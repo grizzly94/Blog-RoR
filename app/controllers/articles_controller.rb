@@ -2,10 +2,10 @@ class ArticlesController <ApplicationController
   before_action :authenticate_user!,except: [:show,:index]
   before_action :set_article, except: [:create,:index,:new]
   before_action :authenticate_editor!, only: [:new,:create,:update]
-  before_action :authenticate_admin!, only: [:destroy]
+  before_action :authenticate_admin!, only: [:destroy,:publish]
   #GET /articles
   def index
-    @articles = Article.all # @ accesible para la vista
+    @articles = Article.paginate(page: params[:page],per_page:3).publicados.ultimos # @ accesible para la vista
   end
   #GET /articles/:id
   def show
@@ -40,6 +40,11 @@ class ArticlesController <ApplicationController
       render :edit
     end
     #@article.update_attributes({title})
+  end
+  #PUT /articles/:id/publish
+  def publish
+    @article.publish!
+    redirect_to @article
   end
 
   def destroy

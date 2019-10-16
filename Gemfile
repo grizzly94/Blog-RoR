@@ -31,6 +31,8 @@ gem 'jquery-rails'
 gem 'aasm'
 #Para archivos
 gem 'paperclip'
+#PAGINACION
+gem 'will_paginate'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
